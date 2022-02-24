@@ -1,0 +1,20 @@
+body {
+    background-color: #13151F;
+}
+
+.rate-yellow {
+    color: var(--bs-yellow);
+}
+
+.rate > input {
+    position: absolute;
+    opacity: 0;
+}
+.hero-area {
+    position: relative;
+    background-color: #13151F;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
