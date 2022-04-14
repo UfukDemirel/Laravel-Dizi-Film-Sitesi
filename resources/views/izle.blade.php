@@ -70,7 +70,7 @@
                                 </div>
                                 @foreach($player as $koy)
                                 <div class="single-slide-cast">
-                                    <img src="{{$koy->image}}"/>
+                                    <img src="{{$koy->image}}" width="100" height="500"/>
                                 </div>
                                 @endforeach
                             </li>

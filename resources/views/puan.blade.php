@@ -29,11 +29,11 @@
                     <form action="{{route('puanpost')}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" name="score_name" value="{{old('score_name')}}" placeholder="Adınız ve Soyadınız..">
+                            <input type="text" class="form-control" name="score_name" required value="{{old('score_name')}}" placeholder="Adınız ve Soyadınız..">
                         </div>
                         <br>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="score_date" value="{{old('score_date')}}" placeholder="00/00/0000">
+                            <input type="date" class="form-control" name="score_date" required value="{{old('score_date')}}" placeholder="00/00/0000">
                         </div>
                         <br>
                         <div class="form-floating mb-3">

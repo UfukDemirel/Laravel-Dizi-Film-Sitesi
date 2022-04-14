@@ -56,7 +56,7 @@ class Controller extends BaseController
         $seriesCategories = SeriesCategories::all();
         $search = $request->get('search');
         $posts= DB::table('movies')
-            ->where('movie_name','like','%'.$search.'%')->get();
+            ->where('movie_name','like',$search.'%')->get();
             return view('search',compact('posts','moviesCategories','seriesCategories'));
     }
 

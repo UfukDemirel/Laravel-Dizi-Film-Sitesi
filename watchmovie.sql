@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 08 Ara 2021, 19:31:33
+-- Üretim Zamanı: 14 Nis 2022, 23:19:39
 -- Sunucu sürümü: 10.4.20-MariaDB
 -- PHP Sürümü: 8.0.9
 
@@ -31,8 +31,6 @@ CREATE TABLE `cast` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `movies_id` bigint(20) NOT NULL,
-  `new_movies_id` bigint(20) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -42,44 +40,80 @@ CREATE TABLE `cast` (
 -- Tablo döküm verisi `cast`
 --
 
-INSERT INTO `cast` (`id`, `created_at`, `updated_at`, `movies_id`, `new_movies_id`, `name`, `slug`, `image`) VALUES
-(2, NULL, NULL, 0, 1, 'Emma Stone', 'emma-stone', 'https://www.kadinveblog.net/wp-content/uploads/2014/08/Emma-Stone-sac-ve-makyaj-2015.jpg'),
-(3, NULL, NULL, 0, 1, 'Emma Thompson', 'emma-thompson', 'https://tr.web.img3.acsta.net/pictures/15/12/08/11/17/523873.jpg'),
-(4, NULL, NULL, 0, 1, 'Joel Fry', 'joel-fry', 'https://tr.web.img2.acsta.net/pictures/15/06/05/15/42/102886.jpg'),
-(5, NULL, NULL, 5, 10, 'Scarlett Johanson', 'scarlett-johanson', 'https://voguecdn.blob.core.windows.net/files/img/article_detail/19-09/05/scarlett-johansson1141750371-1-1567687060.jpg'),
-(6, NULL, NULL, 5, 0, 'Robert Downey JR.', 'robert-downey-jr', 'https://pbs.twimg.com/media/Bzmlvg2CQAAnYtO.jpg'),
-(7, NULL, NULL, 5, 0, 'Chris Hemsworth', 'chris-hemsworth', 'https://i.pinimg.com/originals/04/db/3a/04db3ae86999d8aabcb29b06e35f529e.jpg'),
-(8, NULL, NULL, 5, 0, 'Chris Evans', 'chris-evans', 'https://bodysize.org/wp-content/uploads/2017/04/Chris-Evans-300x400.jpg'),
-(9, NULL, NULL, 5, 0, 'Jeremy Renner', 'jeremy-renner', 'https://tr.web.img4.acsta.net/pictures/15/08/12/12/49/191565.jpg'),
-(10, NULL, NULL, 5, 0, 'Mark Ruffalo', 'mark-ruffalo', 'https://tr.web.img4.acsta.net/pictures/15/08/12/12/29/266164.jpg'),
-(11, NULL, NULL, 5, 0, 'Paull Rudd', 'paul-rudd', 'https://www.simonemmett.co.uk/wp-content/uploads/2018/10/180423_Shot_01_00159_04_FLAT-600x800.jpg'),
-(12, NULL, NULL, 5, 0, 'Brie Larson', 'brie-larson', 'https://tr.web.img4.acsta.net/pictures/16/10/13/12/09/081021.jpg'),
-(13, NULL, NULL, 5, 0, 'Tom Holland', 'tom-holland', 'https://tr.web.img4.acsta.net/pictures/15/11/24/16/53/595385.jpg'),
-(14, NULL, NULL, 5, 0, 'Josh Brolin', 'josh-brolin', 'https://tr.web.img4.acsta.net/pictures/15/05/19/14/54/445165.jpg'),
-(15, NULL, NULL, 1, 0, 'Chris Pratt', 'chris-pratt', 'https://tr.web.img3.acsta.net/pictures/15/07/27/13/07/079239.jpg'),
-(16, NULL, NULL, 1, 0, 'Dave Bautista', 'dave-bautista', 'https://tr.web.img4.acsta.net/pictures/14/02/18/11/39/096853.jpg'),
-(17, NULL, NULL, 1, 0, 'Zoe Saldana', 'zoe-saldana', 'https://www.bravebeginnings.org/wp-content/uploads/2015/09/zoe-saldana-01-600x800.jpg'),
-(18, NULL, NULL, 1, 0, 'Vin Diesel', 'vin-diesel', 'https://tr.web.img4.acsta.net/pictures/15/10/14/11/30/335169.jpg'),
-(19, NULL, NULL, 1, 0, 'Bradley Cooper', 'bradley-cooper', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkQylZITf7zTxQDulZuchWHMEh8H31KggIohgoUpEdFg43B-TWKPtTYtN7kvvxS1VWGQE&usqp=CAU'),
-(20, NULL, NULL, 1, 0, 'Karen Gillian', 'karen-gillian', 'https://i.pinimg.com/originals/3b/50/f9/3b50f9ed37e820fea88d134410b51946.jpg'),
-(21, NULL, NULL, 1, 0, 'Micheal Rooker', 'micheal-rooker', 'https://st4.depositphotos.com/25606694/28496/i/600/depositphotos_284961510-stock-photo-michael-rooker.jpg'),
-(22, NULL, NULL, 3, 0, 'Daniel Craig', 'daniel-craig', 'https://tr.web.img3.acsta.net/pictures/15/10/05/10/01/037461.jpg'),
-(23, NULL, NULL, 3, 0, 'Javier Bardem', 'javier-bardem', 'https://i.pinimg.com/originals/31/d6/fc/31d6fc808da8ff2f609cb163a1dfe7ef.jpg'),
-(24, NULL, NULL, 3, 0, 'Judi Dench', 'judi-dench', 'https://tr.web.img4.acsta.net/pictures/15/11/17/17/07/389094.jpg'),
-(25, NULL, NULL, 3, 0, 'Naomie Harris', 'naomie-harris', 'https://tr.web.img4.acsta.net/pictures/17/01/09/17/01/556777.jpg'),
-(26, NULL, NULL, 3, 0, 'Bérénice Marlohe', 'berenice-marlohe', 'https://tr.web.img3.acsta.net/pictures/16/01/12/12/16/201766.jpg'),
-(27, NULL, NULL, 3, 0, 'Ralph Fiennes', 'ralph-fiennes', 'https://tr.web.img2.acsta.net/pictures/14/12/05/16/01/227338.jpg'),
-(28, NULL, NULL, 0, 2, 'Ryan Reynolds', 'ryan-reynolds', 'https://tr.web.img4.acsta.net/pictures/15/07/28/17/15/280194.jpg'),
-(29, NULL, NULL, 0, 2, 'Jodie Comer', 'jodie-comer', 'https://i.pinimg.com/736x/ba/ad/12/baad12cfe4abfd74843e0897257a2867.jpg'),
-(30, NULL, NULL, 0, 2, 'Joe Keery', 'joe-keery', 'https://i.pinimg.com/originals/0f/ef/ff/0fefff4e232abad4806f38503cf6cc9e.jpg'),
-(31, NULL, NULL, 0, 2, 'Pokimane', 'pokimane', 'https://pbs.twimg.com/media/B1QAq7HIMAAYEDv.jpg'),
-(32, NULL, NULL, 7, 0, 'Keanu Revees', 'keanu-revees', 'https://tr.web.img3.acsta.net/pictures/15/12/28/15/43/230792.jpg'),
-(33, NULL, NULL, 8, 0, 'Keanu Revees', 'keanu-revees', 'https://tr.web.img4.acsta.net/pictures/17/02/06/17/01/343859.jpg'),
-(34, NULL, NULL, 8, 0, 'Ruby Rose', 'ruby-rose', 'https://image.biletinial.com//Uploads/People/ruby-rose-20201224101955.jpg'),
-(35, NULL, NULL, 8, 0, 'Lonnie Rashid Lynn', 'lonnie-rashid-lynn', 'https://tr.web.img2.acsta.net/pictures/16/04/11/14/14/131495.jpg'),
-(36, NULL, NULL, 8, 0, 'Lan Mcshane', 'lan-mcshane', 'https://tr.web.img2.acsta.net/pictures/16/02/17/16/41/160796.jpg'),
-(37, NULL, NULL, 8, 0, 'Riccardo Scamarcio', 'riccardo-scamarcio', 'https://tr.web.img2.acsta.net/pictures/16/05/19/15/39/557678.jpg'),
-(38, NULL, NULL, 8, 0, 'Lance Reddick', 'lance-reddick', 'https://tr.web.img4.acsta.net/pictures/16/05/24/15/18/419467.jpg');
+INSERT INTO `cast` (`id`, `created_at`, `updated_at`, `name`, `slug`, `image`) VALUES
+(5, NULL, NULL, 'Scarlett Johanson', 'scarlett-johanson', 'https://voguecdn.blob.core.windows.net/files/img/article_detail/19-09/05/scarlett-johansson1141750371-1-1567687060.jpg'),
+(6, NULL, NULL, 'Robert Downey JR.', 'robert-downey-jr', 'https://pbs.twimg.com/media/Bzmlvg2CQAAnYtO.jpg'),
+(7, NULL, NULL, 'Chris Hemsworth', 'chris-hemsworth', 'https://i.pinimg.com/originals/04/db/3a/04db3ae86999d8aabcb29b06e35f529e.jpg'),
+(8, NULL, NULL, 'Chris Evans', 'chris-evans', 'https://bodysize.org/wp-content/uploads/2017/04/Chris-Evans-300x400.jpg'),
+(9, NULL, NULL, 'Jeremy Renner', 'jeremy-renner', 'https://tr.web.img4.acsta.net/pictures/15/08/12/12/49/191565.jpg'),
+(10, NULL, NULL, 'Mark Ruffalo', 'mark-ruffalo', 'https://tr.web.img4.acsta.net/pictures/15/08/12/12/29/266164.jpg'),
+(11, NULL, NULL, 'Paull Rudd', 'paul-rudd', 'https://static.boxofficeturkiye.com/person/200x250/391-gfMWd.jpg'),
+(12, NULL, NULL, 'Brie Larson', 'brie-larson', 'https://tr.web.img4.acsta.net/pictures/16/10/13/12/09/081021.jpg'),
+(13, NULL, NULL, 'Tom Holland', 'tom-holland', 'https://tr.web.img4.acsta.net/pictures/15/11/24/16/53/595385.jpg'),
+(14, NULL, NULL, 'Josh Brolin', 'josh-brolin', 'https://tr.web.img4.acsta.net/pictures/15/05/19/14/54/445165.jpg'),
+(15, NULL, NULL, 'Chris Pratt', 'chris-pratt', 'https://tr.web.img3.acsta.net/pictures/15/07/27/13/07/079239.jpg'),
+(16, NULL, NULL, 'Dave Bautista', 'dave-bautista', 'https://tr.web.img4.acsta.net/pictures/14/02/18/11/39/096853.jpg'),
+(17, NULL, NULL, 'Zoe Saldana', 'zoe-saldana', 'https://www.bravebeginnings.org/wp-content/uploads/2015/09/zoe-saldana-01-600x800.jpg'),
+(18, NULL, NULL, 'Vin Diesel', 'vin-diesel', 'https://tr.web.img4.acsta.net/pictures/15/10/14/11/30/335169.jpg'),
+(19, NULL, NULL, 'Bradley Cooper', 'bradley-cooper', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkQylZITf7zTxQDulZuchWHMEh8H31KggIohgoUpEdFg43B-TWKPtTYtN7kvvxS1VWGQE&usqp=CAU'),
+(20, NULL, NULL, 'Karen Gillian', 'karen-gillian', 'https://i.pinimg.com/originals/3b/50/f9/3b50f9ed37e820fea88d134410b51946.jpg'),
+(21, NULL, NULL, 'Micheal Rooker', 'micheal-rooker', 'https://st4.depositphotos.com/25606694/28496/i/600/depositphotos_284961510-stock-photo-michael-rooker.jpg'),
+(22, NULL, NULL, 'Daniel Craig', 'daniel-craig', 'https://tr.web.img3.acsta.net/pictures/15/10/05/10/01/037461.jpg'),
+(23, NULL, NULL, 'Javier Bardem', 'javier-bardem', 'https://i.pinimg.com/originals/31/d6/fc/31d6fc808da8ff2f609cb163a1dfe7ef.jpg'),
+(24, NULL, NULL, 'Judi Dench', 'judi-dench', 'https://tr.web.img4.acsta.net/pictures/15/11/17/17/07/389094.jpg'),
+(25, NULL, NULL, 'Naomie Harris', 'naomie-harris', 'https://tr.web.img4.acsta.net/pictures/17/01/09/17/01/556777.jpg'),
+(26, NULL, NULL, 'Bérénice Marlohe', 'berenice-marlohe', 'https://tr.web.img3.acsta.net/pictures/16/01/12/12/16/201766.jpg'),
+(27, NULL, NULL, 'Ralph Fiennes', 'ralph-fiennes', 'https://tr.web.img2.acsta.net/pictures/14/12/05/16/01/227338.jpg'),
+(28, NULL, NULL, 'Ryan Reynolds', 'ryan-reynolds', 'https://tr.web.img4.acsta.net/pictures/15/07/28/17/15/280194.jpg'),
+(29, NULL, NULL, 'Jodie Comer', 'jodie-comer', 'https://i.pinimg.com/736x/ba/ad/12/baad12cfe4abfd74843e0897257a2867.jpg'),
+(30, NULL, NULL, 'Joe Keery', 'joe-keery', 'https://i.pinimg.com/originals/0f/ef/ff/0fefff4e232abad4806f38503cf6cc9e.jpg'),
+(31, NULL, NULL, 'Pokimane', 'pokimane', 'https://pbs.twimg.com/media/B1QAq7HIMAAYEDv.jpg'),
+(32, NULL, NULL, 'Keanu Revees', 'keanu-revees', 'https://tr.web.img3.acsta.net/pictures/15/12/28/15/43/230792.jpg'),
+(34, NULL, NULL, 'Ruby Rose', 'ruby-rose', 'https://image.biletinial.com//Uploads/People/ruby-rose-20201224101955.jpg'),
+(35, NULL, NULL, 'Lonnie Rashid Lynn', 'lonnie-rashid-lynn', 'https://tr.web.img2.acsta.net/pictures/16/04/11/14/14/131495.jpg'),
+(36, NULL, NULL, 'Lan Mcshane', 'lan-mcshane', 'https://tr.web.img2.acsta.net/pictures/16/02/17/16/41/160796.jpg'),
+(37, NULL, NULL, 'Riccardo Scamarcio', 'riccardo-scamarcio', 'https://tr.web.img2.acsta.net/pictures/16/05/19/15/39/557678.jpg'),
+(38, NULL, NULL, 'Lance Reddick', 'lance-reddick', 'https://tr.web.img4.acsta.net/pictures/16/05/24/15/18/419467.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `cast_movies`
+--
+
+CREATE TABLE `cast_movies` (
+  `movies_id` int(11) NOT NULL,
+  `cast_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Tablo döküm verisi `cast_movies`
+--
+
+INSERT INTO `cast_movies` (`movies_id`, `cast_id`) VALUES
+(1, 15),
+(1, 16),
+(1, 17),
+(1, 18),
+(1, 19),
+(1, 20),
+(5, 5),
+(5, 6),
+(5, 7),
+(5, 8),
+(5, 9),
+(5, 10),
+(5, 11),
+(5, 12),
+(5, 13),
+(5, 14),
+(1, 21),
+(3, 22),
+(3, 23),
+(3, 24),
+(3, 25),
+(3, 26),
+(3, 27);
 
 -- --------------------------------------------------------
 
@@ -226,7 +260,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (31, '2021_10_14_104228_create_new_series_categories_table', 11),
 (32, '2021_10_14_124401_create_newly_released_table', 12),
 (33, '2021_10_18_102613_create_cast_table', 13),
-(34, '2021_12_04_120636_create_reviews_table', 14);
+(34, '2021_12_04_120636_create_reviews_table', 14),
+(35, '2022_02_16_134107_create_people_table', 15);
 
 -- --------------------------------------------------------
 
@@ -236,58 +271,58 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `movies` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `category_id` int(11) NOT NULL,
-  `movie_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `movie_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `movie_director` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `movie_slug` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `movie_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `movie_desc` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `movie_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `movie_desc` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `movie_imdb` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `movie_date` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `movie_time` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `movies` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `emoji` varchar(350) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `movies` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `emoji` varchar(350) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `movie_avg_score` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Tablo döküm verisi `movies`
 --
 
-INSERT INTO `movies` (`id`, `created_at`, `category_id`, `movie_name`, `movie_director`, `movie_slug`, `movie_image`, `movie_desc`, `movie_imdb`, `movie_date`, `movie_time`, `movies`, `emoji`) VALUES
-(1, NULL, 1, 'Guardians Of The Galaxy', 'James Gunn', 'guardians-of-the-galaxy', 'https://s1.1zoom.me/b5050/916/Warriors_Men_Raccoons_Zoe_Saldana_Guardians_of_the_519152_600x800.jpg', 'Galaksinin Koruyucuları, evrenin kontrolünü ele geçirmeye çalışanları durdurmaya çalışan bir grup suçlunun hikayesini konu ediyor. Kendisine Star-Lord lakabını takan maceracı Peter Quill, esrarengiz bir küreyi çalınca güçlü, hırslı ve ihtiraslı bir kötü adam olan Ronan\'la başı derde girer.', '8.0', '2014', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/d96cjJhvlMA', 'https://img.icons8.com/color/48/000000/groot.png'),
-(3, NULL, 8, 'Skyfall/Ölmek İçin Zaman Yok', 'Sam Mendes', 'skyfall-olmek-icin-zaman-yok', 'https://image.biletinial.com//Uploads/Films/james-bond-no-time-to-die-2021103103515-2.jpg', 'Skyfall, MGM, Columbia Pictures ve Sony Pictures Entertainment\'in Eon Productions tarafından üretilen, James Bond serisinin yirmi üçüncü filmidir. Sam Mendes\'in yönettiği bu filmde Daniel Craig James Bond karakteri olarak üçüncü performansını sergiliyor. Filmde James Bond\'un M\'e karşı sadakati sınanacaktır.', '7.8', '2012', '2 Hours 23 Minutes', 'https://www.youtube.com/embed/ZQ_8TX9fyjQ', 'https://img.icons8.com/color/48/000000/james-bond--v1.png'),
-(4, NULL, 7, '1917', 'Sam Mendes', '1917', 'https://biletinial.com/Uploads/Films/1917-202016111946.jpg', '1917, İngiliz yönetmen, yapımcı ve senarist Sam Mendes\'in yazdığı, oynadığı ve yönettiği epik savaş filmidir. Filmin oyuncuları George MacKay, Mark Strong, Andrew Scott, Richard Madden, Claire Duburcq, Colin Firth ve Benedict Cumberbatch\'tır.', '8.3', '2019', '1 Hours 59 Minutes', 'https://www.youtube.com/embed/RDpwH-S4JwA', 'https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-soldier-occupation-and-people-victoruler-linear-colour-victoruler.png'),
-(5, NULL, 1, 'Avengers/Endgame', 'Anthony Russo/Joe Russo', 'avengers-endgame', 'https://storage.googleapis.com/cinecity/uploads/movie/image/600x800/avengers-endgame-afis1-1190-1190.jpg?=a7ef50a973c242765ba4d9b41399ff76', 'Avengers: Endgame, Marvel Comics\'in İntikamcılar adlı süper kahraman grubundan uyarlanan ve Marvel Studios tarafından yapımı üstlenilen ABD süper kahraman filmi. 2018 yapımı Avengers: Sonsuzluk Savaşı filminin devamı niteliğinde olup yirmi ikinci Marvel Sinematik Evreni filmidir.', '8.4', '2019', '2 Hours 3 Minutes', 'https://www.youtube.com/embed/TcMBFSGVi1c', 'https://img.icons8.com/windows/64/000000/avengers.png'),
-(6, NULL, 8, 'Batman/Kara Şövalye Yükseliyor', 'Christopher Nolan', 'batman-kara-sovalye-yukseliyor', 'https://tr.web.img4.acsta.net/pictures/bzp/03/115362.jpg', 'Kara Şövalye, Christopher Nolan\'ın yönettiği bir süper kahraman filmidir. DC Comics\'in kurgusal karakteri Batman\'den uyarlanan 2005 tarihli Batman Başlıyor filminin devamıdır. Kara Şövalye\'nin senaryosunu Christopher ve kardeşi Jonathan Nolan yazmıştır. Hikâyeyi ise David S. Goyer oluşturmuştur. ', '9.0', '2008', '2 Hours 23 Minutes', 'https://www.youtube.com/embed/WzU32YlU2WI', 'https://img.icons8.com/color/48/000000/batman-old.png'),
-(7, NULL, 8, 'John Wick 1', ' Chad Stahelski', 'john-wick-1', 'https://tr.web.img2.acsta.net/pictures/14/10/14/15/30/266211.jpg', 'John Wick bir Amerikalı aksiyon filmlerinden oluşan bir seridir. Lionsgate tarafından dağıtılan ve ilk filmi 2014\'te çıkan seri dünya çapında büyük hasılat elde etmiş ve izleyicilerin beğenisini toplamıştır. Serinin dördüncü filmi 27 Mayıs 2022\'de vizyona girecek.', '7.4', '2014', '1 Hours 41 Minutes', 'https://www.youtube.com/embed/C0BMx-qxsP4', 'https://img.icons8.com/color/48/000000/gun.png'),
-(8, NULL, 8, 'John Wick 2 ', 'Chad Stahelski', 'john-wick-2', 'https://eniyiyabancifilmler.com/wp-content/uploads/2020/12/John-Wick-2.jpg', 'John Wick 2017 yapımı, yönetmenliğini Chad Stahelski\'nin, senaristliğini de Derek Kolstad\'ın üstlendiği Amerikan, aksiyon filmi. Filmin baş rollerini Keanu Reeves, Laurence Fishburne, Riccardo Scamarcio ve Ruby Rose isimler paylaşmıştır. 2014 yapımı olan John Wick\'in devam filmidir.', '7.5', '2017', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/sZxdALDxLyQ', 'https://img.icons8.com/bubbles/50/000000/gun.png'),
-(9, NULL, 8, 'John Wick 3 ', 'Chad Stahelski', 'john-wick-3', 'https://m.media-amazon.com/images/M/MV5BMmUyZWE3MjEtZmZhOS00Nzk0LWE4MDUtY2JhYjkzZDFmZDRhXkEyXkFqcGdeQXVyMTAzODYwMzY3._V1_.jpg', 'John Wick: Bölüm 3; başrolünü Keanu Reeves\'in üstlendiği 2019 yılında vizyona giren Amerikan yapımı bir aksiyon filmidir. John Wick ve John Wick: Bölüm 2\'nin devam filmidir. İlk ve ikinci filmdeki zincirleme oluşan olayların devamını göstermektedir.', '7.4', '2019', '2 Hours 11 Minutes', 'https://www.youtube.com/embed/9ZIAiQMhY70', 'https://img.icons8.com/external-justicon-lineal-color-justicon/64/000000/external-gun-pirates-justicon-lineal-color-justicon.png'),
-(10, NULL, 2, 'Cars 1', 'John Lasseter', 'cars-1', 'https://i.pinimg.com/736x/74/d5/60/74d5602953548328bbfed6f643e3b307--disney-cars-pixar.jpg', 'Piston Kupası için The King ve Chick Hicks’e karşı yarışmak üzere Kaliforniya’ya gitmekte olan meşhur yarış arabası Lightning McQueen, kaza ile Radiator Springs adındaki küçük bir kasabanın yollarına zarar verir. Üstelik kendisinin de tamir olması için çok çalışması gerekmektedir. Bu sırada bu olayla beraber o kasabada geçirdiği zamanlarda dostluklar edinir ve gerçek sevgiyi yaşar. Hatta aşkı bile katar yaşamına. Bu küçük kasabada kaldığı sürece değerleri değişmeye başlar. İşte ancak ondan sonra gerçek bir kazanan olmaya hazır hale gelecektir. Arabalar üzerinden hayatın anlamına dokunan keyifli bir animasyon.', '7.1', '2006', '1 Hours 57 Minutes', 'https://www.youtube.com/embed/wFVKnC_9B9Y', 'https://img.icons8.com/color/48/000000/pixar.png'),
-(11, NULL, 2, 'Cars 2', 'John Lasseter', 'cars-2', 'https://tr.web.img3.acsta.net/medias/nmedia/18/71/72/07/19650210.jpg', 'Arabalar 2, Pixar\'ın yapımlığında bir bilgisayar animasyonu aksiyon macera komedi 3-D filmidir ve 2006 yapımlı Arabalar filminin devamıdır. Dağıtımını Walt Disney Pictures şirketi yapmıştır. Ratatuy filminin yönetmeni Brad Lewis ve filmin yapımcısı John Lasseter görevi devraldı.', '6.1', '2011', '1 Hours 47 Minutes', 'https://www.youtube.com/embed/JnSE21Tifh0', 'https://img.icons8.com/nolan/48/pixar.png'),
-(12, NULL, 2, 'Cars 3', 'John Lasseter', 'cars-3', 'https://s1.1zoom.me/b5050/717/Cars_3_Lightning_McQueen_Jackson_Storm_Two_525908_600x800.jpg', 'Arabalar 3, Pixar\'ın yapımcılığında Walt Disney Pictures tarafından yayınlanan bir bilgisayar animasyonu 3-D filmidir ve 2006 yapımlı Arabalar ve 2011 yapımlı Arabalar 2 filmlerinin devamı olan 16 Haziran 2017 tarihinde vizyona giren üçüncü Arabalar filmidir. ', '6.7', '2017', '1 Hours 49 Minutes', 'https://www.youtube.com/embed/v0rXPy3msog', 'https://img.icons8.com/windows/48/000000/pixar.png'),
-(13, NULL, 2, 'Oyuncak Hikayesi 1 ', 'John Lasseter', 'oyuncak-hikayesi-1', 'https://tr.web.img4.acsta.net/pictures/bzp/01/14264.jpg', 'Buzz Lightyear adlı yeni çıkan oyuncak, Andy\'e hediye edilir. Oyuncağı çok seven Andy, eski gözdesi Şerif Woody\'e olan ilgisini yitirir. Bir gün Buzz yanlışlıkla pencereden aşağı uçunca, herkes Woody\'nin onu öldürdüğüne inanır. Woody, kendisini kurtarabilmek için Buzz\'ın arkasından giderek onu geri getirmeye karar verir. Fakat ikiliyi dış dünyada büyük tehlikelerle dolu maceralar beklemektedir.\r\n\r\n\"Oyuncak Hikâyesi\", 2005 yılında Kongre Kütüphanesi tarafından \"kültürel, tarihi ve estetik olarak önemli\" filmler arasına seçilerek ABD Ulusal Film Arşivi\'nde muhafaza edilmesine karar verilmiştir.', '8.3', '1995', '1 Hours 14 Minutes', 'https://www.youtube.com/embed/v-PjgYDrg70', 'https://img.icons8.com/ios-filled/48/000000/buzz-lightyear.png'),
-(14, NULL, 2, 'Oyuncak Hikayesi 2 ', 'John Lasseter', 'oyuncak-hikayesi-2', 'https://tr.web.img2.acsta.net/pictures/bzp/03/22323.jpg', 'Andy\'nin tatil için bir kovboy kampına gitmesi sonucu oyuncakları kendi başına kalırlar. Bu sırada paradan başka bir şey düşünmeyen AL McWhiggin adlı koleksiyoncu, Woody\'yi kaçırır. Kaçırılan Woody geçmişine ilişkin bazı gerçeklerle yüz yüze gelerek eski ve yeni arkadaşları arasında bir seçim yapmak zorunda kalır.', '7.9', '1999', '1 Hours 22 Minutes', 'https://www.youtube.com/embed/AvWwvcUuNKs', 'https://img.icons8.com/nolan/48/pixar.png'),
-(15, NULL, 2, 'Oyuncak Hikayesi 3 ', 'Lee Unkrich', 'oyuncak-hikayesi-3', 'https://tr.web.img3.acsta.net/pictures/bzp/01/126123.jpg', 'Andy artık büyümüştür, üniversiteye gidecektir. Oyuncaklar ile oynamayı bırakmıştır. Woody, Bazz ve diğer oyuncaklar tekrar Andy ile oynamak için bir yol bulmaya çalışırlar. Andy Woody dışındaki oyuncakları bir poşet içinde tavan arasına kaldırmak isterken yanlışlıklar sonucu diğer oyuncaklar kendilerini bir kreşte bulurlar. Kreşin oyuncaklarının lideri Yumuş adlı bir pelüş ayıdır. Yumuş ve yanındaki oyuncaklar önce Buzz ve arkadaşlarına iyi davranıyormuş gibi gözükse de sonradan o kadar da iyi olmadıkları anlaşılır. Woody bir şekilde kreşe ulaşır v oradan diğer arkadaşlarıyla bir kaçış planı yapar. Yumuş ise onları engellemek için elinden geleni yapar.\r\n\r\n', '8.2', '2010', '1 Hours 43 Minutes', 'https://www.youtube.com/embed/wTy-MSfC8tA', 'https://img.icons8.com/color/48/000000/pixar-lamp.png'),
-(16, NULL, 2, 'Oyuncak Hikayesi 4', 'Josh Cooley', 'oyuncak-hikayesi-4', 'https://image.biletinial.com/Uploads/Films/oyuncak-hikayesi-4-201961311557.jpg', 'Oyuncak Hikayesi 4, kaşıktan yapılma bir oyuncak olan Forky\'nin atıldığı macerayı konu ediyor. ... Tek kullanımlık bir kaşıktan yapılma bir oyuncak olsa da o oyuncak olmadığı konusunda ısrarcıdır. Kendisini Bonnie\'nin odasına ait hissetmeyen Forky, dünyadaki amacının ne olduğunu düşünmeye başlar.', '7.7', '2019', '1 Hours 40 Minutes', 'https://www.youtube.com/embed/ldOHKNg9A4M', 'https://img.icons8.com/color-glass/48/000000/pixar-lamp-2.png'),
-(17, NULL, 2, 'COCO', ' Adrian Molina/Lee Unkrich', 'coco', 'https://tr.web.img2.acsta.net/pictures/18/06/11/11/24/4980871.jpg', 'Coco, 12 yaşındaki Miguel\'in ölüler diyarındaki macerasını anlatıyor. 12 yaşındaki Miguel\'in en büyük kahramanı efsanevi Meksikalı gitarist Ernesto de la Cruz\'dur. Ancak Cruz hayatını kaybetmiştir ve Miguel\'in onunla tanışma imkanı yoktur. ... Ancak gitarı çalması onu bir anda Ölüler Diyarı\'na götürüverir.', '8.4', '2017', '1 Hours 45 Minutes', 'https://www.youtube.com/embed/Ga6RYejo6Hk', 'https://img.icons8.com/emoji/48/000000/man-light-skin-tone.png'),
-(18, NULL, 3, 'Aquaman', 'James Wan', 'aquaman', 'https://tr.web.img2.acsta.net/pictures/18/11/16/07/25/2787536.jpg', 'Justice League sonrasında yaşananlardan yola çıkan solo Aquaman filminde Jason Momoa; John Curry, namıdiğer Aquaman\'a hayat vermeye devam ederken film, kahramanın gelen tehditler karşısında yurdu Atlantis\'i savunmak için girdiği amansız mücadeleyi konu ediniyor.', '6.9', '2018', '2 Hours 24 Minutes', 'https://www.youtube.com/embed/WDkg3h8PCVU', 'https://img.icons8.com/color/48/000000/aquaman.png'),
-(19, NULL, 3, 'Alaaddin', 'Guy Ritchie', 'alaaddin', 'https://biletinial.com/Uploads/Films/aladdin-2019516103920.jpg', 'Aladdin, sihirli bir lamba sayesinde sevdiği kıza ulaşmaya çalışırken, kendisini zorlu bir maceranın içerisinde bulan bir gencin hikayesini konu ediyor. Aladdin, zamanını Agrabah şehrinde pazardan yiyecek çalarak geçiren fakir bir gençtir. ... Ancak yaşam tarzına rağmen aslında Aladdin\'in altın gibi bir kalbi vardır.', '6.9', '2019', '2 Hours 8 Minutes', 'https://www.youtube.com/embed/foyufD52aog', 'https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/64/000000/external-lamp-camping-icongeek26-linear-colour-icongeek26.png'),
-(20, NULL, 3, 'Ready Player One', 'Steven Spielberg', 'ready-player-one', 'https://tr.web.img4.acsta.net/pictures/18/03/21/15/11/0917889.jpg', 'Ailesini küçük yaşta kaybeden Wade Watts, gerçek dünyanın sıkıntılarından kaçmak için zamanını The Oasis adlı bir oyun evreninde geçirir. Oyunun milyoner kurucusu oyun evreninin içine bir anahtar saklamıştır ve öldüğünde tüm servetini ve oyunun kontrolünü bu anahtarı bulana vadetmektedir', '7.4', '2018', '2 Hours 20 Minutes', 'https://www.youtube.com/embed/cSp1dM2Vj48', 'https://img.icons8.com/external-ddara-lineal-color-ddara/48/000000/external-gamer-ar-and-vr-technology-ddara-lineal-color-ddara.png'),
-(21, NULL, 3, 'X-Men: Dark Phoenix', 'Simon Kinberg', 'x-men-dark-phoneix', 'https://i.pinimg.com/originals/be/3c/bb/be3cbbdb06f7d362fa30f002a68f353f.jpg', 'X-Men: Dark Phoenix, Marvel Comics\'in X-Men karakterlerinden uyarlanan ve 20th Century Fox tarafından dağıtılan ABD yapımı süper kahraman filmi. X-Men film serisinin on üçüncü ve yeni bir X-Men üçlemesinin başlangıç filmi olacaktır.', '6.0', '2019', '1 Hours 54 Minutes', 'https://www.youtube.com/embed/k7IG_ICMrhk', 'https://img.icons8.com/color/48/000000/hawkgirl.png'),
-(24, NULL, 4, 'Se7en', 'David Fincher', 'seven', 'https://www.tekfullfilmizle.net/wp-content/uploads/yedi-se7en.jpg', 'Yedi, seri cinayetler işleyen bir katilin peşine düşen iki polis dedektifinin hikayesini anlatıyor. Bir seri katil 7 ölümcül günahı işleyenleri kendi yöntemleriyle öldürmektedir. Yedi Ölümcül Günah, Hıristiyanlık inançlarına göre Kibir, Açgözlülük, Şehvet Düşkünlüğü,Kıskançlık, Oburluk,Yıkıcılık ve Tembellik\'tir. İki polis dedektifi bu seri katilin peşindedir. Film, Amerika\'da gösterime girdiği hafta 14.000.000 dolar gelir elde etmişti. Yönetmen David Fincher imzalı film,sürükleyici konusu ve oyuncuların performanslarıyla tüm dünyada gişede büyük başarı yakalamıştı. Başrollerde Brad Pitt, Morgan Freeman, Gywneth Paltrow var. En iyi kurgu dalında 1996’da ödüle aday olan film bu ödülü alamamıştı. Özellikle sürpriz ve çarpıcı finali ile şimdiden sinema tarihinde bir klasik olarak yerini aldı.', '8.6', '1995', '2 Hours 7 Minutes', 'https://www.youtube.com/embed/znmZoVkCjpI', 'https://img.icons8.com/ios-filled/50/000000/no-weapons.png'),
-(25, NULL, 5, 'Ned Kelly', 'Gregor Jordan', 'ned-kelly', 'https://tr.web.img2.acsta.net/pictures/bzp/01/38713.jpg', 'Ned Kelly, Gregor Jordan\'ın yönettiği, Avustralya yapımı bir western filmidir. Suçlu Ned Kelly\'nin hayatını konu alan Robert Drewe\'in Our Sunshine adlı kitabından yola çıkılarak çekilmiştir. Yapım dünya çapında 6,585,516$ kazanmıştır.', '6.5', '2003', '1 Hours 50 Minutes', 'https://www.youtube.com/embed/tc6GA-kahbE', NULL),
-(26, NULL, 5, 'The Revenant', 'Alejandro González Iñárritu', 'the-revenant', 'https://i.pinimg.com/originals/db/ec/52/dbec52733eecedb20cccbbbec4456d85.jpg', 'Diriliş, Alejandro G. Iñárritu\'nun yönettiği, 2016 yılında gösterime giren biyografik western gerilim filmi. Senaryo Michael Punke\'nin 2002\'de yayınlanan aynı adlı romanından uyarlanarak Iñárritu ve Mark L. Smith tarafından yazıldı. Filmde sınır sakini Hugh Glass\'ın hayatından esinlenildi.', '8', '2015', '2 Hours 36 Minutes', 'https://www.youtube.com/embed/LoebZZ8K5N0', NULL),
-(27, NULL, 8, '21 Bridges', 'Brian Kirk', '21-bridges', 'https://biletinial.com/Uploads/Films/21-bridges-201962010347.jpg', 'Gözden düşmüş bir NYPD dedektifi, polis katili bir adamın şehirde bir insan avı başlatmasıyla kendini affettirmek için ikinci bir şans elde eder. Meslektaşlarını bir suç imparatorluğu ile ilişkilendiren bir komployu açığa çıkaran dedektif, kendini büyük çaplı bir kovalamacanın göbeğinde bulur.', '6.6', '2019', '1 Hours 36 Minutes', 'https://www.youtube.com/embed/BVZDhunTrYA', NULL),
-(28, NULL, 6, 'Joker', 'Todd Phillips', 'joker', 'https://s1.1zoom.me/b6253/890/Joker_hero_Joker_2019_Joaquin_Phoenix_Clown_572451_600x800.jpg', 'Joker, başarısız bir komedyen olan Arthur Fleck\'in hayatına odaklanıyor. Toplum tarafından dışlanan bir adam olan Arthur, hayatta yapayalnızdır. Sürekli bir bağ kurma arayışında olan Arthur, yaşamını taktığı iki maske ile geçirir. ... Arthur, zamanla kendi kimliğinden uzaklaşıp Joker karakterine bürünür.', '8.4', '2019', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/WVC1KC4Lauc', NULL),
-(29, NULL, 1, 'The Suicide Squad / İntihar Timi', 'James Gunn', 'the-suicide-squad-intihar-timi', 'https://cdn.biletinial.com/Uploads/Films/the-suicide-squad-intihar-timi-202172792854.jpg', 'The Suicide Squad: İntihar Timi, hapishaneden çıkabilmek için çabalayan kötü kahramanlara odaklanıyor. Belle Reve, ABD\'deki en yüksek ölüm oranına sahip olan hapishanedir. Süper Kötülerin tutulduğu bu yerden kurtulmak için her şey göze alınır. Bloodsport, Peacemaker, Captain Boomerang, Ratcatcher 2, Savant, King Shark, Blackguard, Javelin ve herkesin favori psikopatı Harley Quinn yap ya da öl görevini yerine getirebilmek için bir mahkumlar timi oluşturur.', '7.3', '2021', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/rahSqns0UCw', NULL),
-(30, NULL, 6, 'Eşkiya', 'Yavuz Turgul', 'eskiya', 'https://tr.web.img4.acsta.net/pictures/bzp/01/17646.jpg', 'Eşkiya, hapse düşmesine neden olan arkadaşının peşine düşen bir adamın hikayesini anlatıyor. 35 yıl önce Cudi dağlarında bir grup eşkiya yakalandı ve hapse atıldı. Yıllar içinde kimi hastalıktan, kimi hesaplaşma sonucu öldü. Biri hariç... 35 yıl sonra Hapisten çıkınca Baran\' ın ilk işi köyüne dönmek olur.', '8.2', '1996', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/FOtWWsRiHJw', NULL),
-(32, NULL, 6, 'God Father', 'Francis Ford Coppola', 'god-father', 'https://tr.web.img3.acsta.net/medias/nmedia/18/91/63/78/20155809.jpg', 'The Godfather ismiyle de bilinen Baba filminde, bir İtalyan mafya ailesinin destansı öyküsü ele alınıyor. 40\'lar ve 50\'lerin Amerika\'sında geçen İtalyan asıllı Corleone ailesinin şehri ve diğer aileleri yönetmesi sonucunda mafya topluluğu haline gelmiştir.', '9.2', '1972', '2 Hours 55 Minutes', 'https://www.youtube.com/embed/sY1S34973zA', NULL),
-(33, NULL, 6, 'God Father 2 ', 'Francis Ford Coppola', 'god-father-2', 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/28d19919067247.562d47bb13239.jpg', 'Michael Corleone, mafya dünyasında inanılmaz bir güce ulaşırken, bir yandan da ailesini korumaya çalışır. Fakat zaman içerisinde gelişen olaylar onu hiç yapmak istemediği işlere ve suçlara yönlendirir. Tek özelliği zekası iken bir anda bir suç imparatorluğunu yönetecek acımasızlığa ve kendine güvene kavuşur.', '9', '1974', '3 Hours 22 Minutes', 'https://www.youtube.com/embed/9O1Iy9od7-A', NULL),
-(34, NULL, 8, 'V For Vendetta ', 'James McTeigue', 'v-for-vendetta', 'https://i.pinimg.com/736x/3c/54/26/3c5426ecfe85d2e03b640415c2c319d8.jpg', 'V, 2020 yılında ve İngiltere\'de geçiyor. Ülke, son derece baskıcı bir toplum düzenini yaşamaktadır. Türlü yasaklar ve engellerle idare edilen halk, şiddet yanlısı bir konuma gelmiştir. Bu kargaşanın orta yerinde görünen gizemli V, belaya bulaşmış masum bir kadın olan Evey\'i kurtarır.', '8.1', '2005', '2 Hours 12 Minutes', 'https://www.youtube.com/embed/IHVzzxrPt1c', NULL),
-(35, NULL, 7, 'Yüzüklerin Efendisi', 'Peter Jackson', 'yuzuklerin-efendisi', 'https://tr.web.img2.acsta.net/medias/nmedia/18/35/11/65/affiche.jpg', 'John Ronald Reuel Tolkien\'in yazdığı Yüzüklerin Efendisi adlı fantastik edebiyat serisinden uyarlanarak çekilmiş Peter Jackson imzalı bir film üçlemesidir. Yüzüklerin Efendisi: Yüzük Kardeşliği Yüzüklerin Efendisi: İki Kule Yüzüklerin Efendisi: Kralın Dönüşü', '8.8', '2001', '2 Hours 58 Minutes', 'https://www.youtube.com/embed/USNqsrW5DrQ', NULL),
-(36, NULL, 8, 'Shershaah', 'Vishnuvardhan', 'shershaah', 'https://1.bp.blogspot.com/-cB1N2IDJx_4/XiAje3sXAEI/AAAAAAAAuHk/R6OKddbIkVsMHiuOeIWWOaHS3_2NaOr6gCNcBGAsYHQ/s1600/Shershaah-Poster-3.jpg', '24 yaşında Kargil Savaşı\'nda şehit edilen yüzbaşı Vikram Batra\'nın ilham veren hikayesi gözler önüne seriliyor.', '8.7', '2021', '2 Hours 15 Minutes', 'https://www.youtube.com/embed/Q0FTXnefVBA', NULL),
-(37, NULL, 1, 'DUNE', 'Denis Villeneuve', 'dune', 'https://image.biletinial.com/Uploads/Films/dune-col-gezegeni-2021811132026.jpg', 'Dune\'un konusu ise şöyle: Uzak bir gelecekte geçen \"Dune\", ailesi çöl gezegeni Arrakis\'in kontrolüne sahip olan Paul Atreides\'in hikayesini anlatıyor. Galaksinin farklı noktalarındaki gezegenler, rakip feodal aileler tarafından yönetilmektedir. ... Bu tuzağın sonucunda Paul\'un ailesi darmadağın olarak firari hale gelir.', '8.4', '2021', '2 Hours 35 Minutes', 'https://www.youtube.com/embed/dHc2AQaEaJw', NULL);
+INSERT INTO `movies` (`id`, `updated_at`, `category_id`, `movie_name`, `movie_director`, `movie_slug`, `movie_image`, `movie_desc`, `movie_imdb`, `movie_date`, `movie_time`, `movies`, `emoji`, `movie_avg_score`) VALUES
+(1, '2022-02-22 12:36:15', 4, 'Guardians Of The Galaxy', 'James Gunn', 'guardians-of-the-galaxy', 'https://s1.1zoom.me/b5050/916/Warriors_Men_Raccoons_Zoe_Saldana_Guardians_of_the_519152_600x800.jpg', 'Galaksinin Koruyucuları, evrenin kontrolünü ele geçirmeye çalışanları durdurmaya çalışan bir grup suçlunun hikayesini konu ediyor. Kendisine Star-Lord lakabını takan maceracı Peter Quill, esrarengiz bir küreyi çalınca güçlü, hırslı ve ihtiraslı bir kötü adam olan Ronan\'la başı derde girer.', '8.0', '2014', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/d96cjJhvlMA', 'https://img.icons8.com/color/48/000000/groot.png', '5.00'),
+(3, '2022-02-22 11:23:55', 4, 'Skyfall/Ölmek İçin Zaman Yok', 'Sam Mendes', 'skyfall-olmek-icin-zaman-yok', 'https://tr.web.img4.acsta.net/medias/nmedia/18/90/24/76/20273691.JPG', 'Skyfall, MGM, Columbia Pictures ve Sony Pictures Entertainment\'in Eon Productions tarafından üretilen, James Bond serisinin yirmi üçüncü filmidir. Sam Mendes\'in yönettiği bu filmde Daniel Craig James Bond karakteri olarak üçüncü performansını sergiliyor. Filmde James Bond\'un M\'e karşı sadakati sınanacaktır.', '7.8', '2012', '2 Hours 23 Minutes', 'https://www.youtube.com/embed/ZQ_8TX9fyjQ', 'https://img.icons8.com/color/48/000000/james-bond--v1.png', '4.50'),
+(4, '2022-02-22 11:35:39', 3, '1917', 'Sam Mendes', '1917', 'https://image.biletinial.com/Uploads/Films/1917-202016111946.jpg', '1917, İngiliz yönetmen, yapımcı ve senarist Sam Mendes\'in yazdığı, oynadığı ve yönettiği epik savaş filmidir. Filmin oyuncuları George MacKay, Mark Strong, Andrew Scott, Richard Madden, Claire Duburcq, Colin Firth ve Benedict Cumberbatch\'tır.', '8.3', '2019', '1 Hours 59 Minutes', 'https://www.youtube.com/embed/RDpwH-S4JwA', 'https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-soldier-occupation-and-people-victoruler-linear-colour-victoruler.png', '4.00'),
+(5, '2022-02-22 11:55:27', 3, 'Avengers/Endgame', 'Anthony Russo/Joe Russo', 'avengers-endgame', 'https://storage.googleapis.com/cinecity/uploads/movie/image/600x800/avengers-endgame-afis1-1190-1190.jpg?=a7ef50a973c242765ba4d9b41399ff76', 'Avengers: Endgame, Marvel Comics\'in İntikamcılar adlı süper kahraman grubundan uyarlanan ve Marvel Studios tarafından yapımı üstlenilen ABD süper kahraman filmi. 2018 yapımı Avengers: Sonsuzluk Savaşı filminin devamı niteliğinde olup yirmi ikinci Marvel Sinematik Evreni filmidir.', '8.4', '2019', '2 Hours 3 Minutes', 'https://www.youtube.com/embed/TcMBFSGVi1c', 'https://img.icons8.com/windows/64/000000/avengers.png', '5.00'),
+(6, NULL, 8, 'Batman/Kara Şövalye Yükseliyor', 'Christopher Nolan', 'batman-kara-sovalye-yukseliyor', 'https://tr.web.img4.acsta.net/pictures/bzp/03/115362.jpg', 'Kara Şövalye, Christopher Nolan\'ın yönettiği bir süper kahraman filmidir. DC Comics\'in kurgusal karakteri Batman\'den uyarlanan 2005 tarihli Batman Başlıyor filminin devamıdır. Kara Şövalye\'nin senaryosunu Christopher ve kardeşi Jonathan Nolan yazmıştır. Hikâyeyi ise David S. Goyer oluşturmuştur. ', '9.0', '2008', '2 Hours 23 Minutes', 'https://www.youtube.com/embed/WzU32YlU2WI', 'https://img.icons8.com/color/48/000000/batman-old.png', '0.00'),
+(7, NULL, 8, 'John Wick 1', ' Chad Stahelski', 'john-wick-1', 'https://tr.web.img2.acsta.net/pictures/14/10/14/15/30/266211.jpg', 'John Wick bir Amerikalı aksiyon filmlerinden oluşan bir seridir. Lionsgate tarafından dağıtılan ve ilk filmi 2014\'te çıkan seri dünya çapında büyük hasılat elde etmiş ve izleyicilerin beğenisini toplamıştır. Serinin dördüncü filmi 27 Mayıs 2022\'de vizyona girecek.', '7.4', '2014', '1 Hours 41 Minutes', 'https://www.youtube.com/embed/C0BMx-qxsP4', 'https://img.icons8.com/color/48/000000/gun.png', NULL),
+(8, NULL, 8, 'John Wick 2 ', 'Chad Stahelski', 'john-wick-2', 'https://image.biletinial.com/Uploads/Films/john-wick-chapter-two-20161122115915.jpg', 'John Wick 2017 yapımı, yönetmenliğini Chad Stahelski\'nin, senaristliğini de Derek Kolstad\'ın üstlendiği Amerikan, aksiyon filmi. Filmin baş rollerini Keanu Reeves, Laurence Fishburne, Riccardo Scamarcio ve Ruby Rose isimler paylaşmıştır. 2014 yapımı olan John Wick\'in devam filmidir.', '7.5', '2017', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/sZxdALDxLyQ', 'https://img.icons8.com/bubbles/50/000000/gun.png', NULL),
+(9, NULL, 8, 'John Wick 3 ', 'Chad Stahelski', 'john-wick-3', 'https://m.media-amazon.com/images/M/MV5BMmUyZWE3MjEtZmZhOS00Nzk0LWE4MDUtY2JhYjkzZDFmZDRhXkEyXkFqcGdeQXVyMTAzODYwMzY3._V1_.jpg', 'John Wick: Bölüm 3; başrolünü Keanu Reeves\'in üstlendiği 2019 yılında vizyona giren Amerikan yapımı bir aksiyon filmidir. John Wick ve John Wick: Bölüm 2\'nin devam filmidir. İlk ve ikinci filmdeki zincirleme oluşan olayların devamını göstermektedir.', '7.4', '2019', '2 Hours 11 Minutes', 'https://www.youtube.com/embed/9ZIAiQMhY70', 'https://img.icons8.com/external-justicon-lineal-color-justicon/64/000000/external-gun-pirates-justicon-lineal-color-justicon.png', NULL),
+(10, NULL, 2, 'Cars 1', 'John Lasseter', 'cars-1', 'https://i.pinimg.com/736x/74/d5/60/74d5602953548328bbfed6f643e3b307--disney-cars-pixar.jpg', 'Piston Kupası için The King ve Chick Hicks’e karşı yarışmak üzere Kaliforniya’ya gitmekte olan meşhur yarış arabası Lightning McQueen, kaza ile Radiator Springs adındaki küçük bir kasabanın yollarına zarar verir. Üstelik kendisinin de tamir olması için çok çalışması gerekmektedir. Bu sırada bu olayla beraber o kasabada geçirdiği zamanlarda dostluklar edinir ve gerçek sevgiyi yaşar. Hatta aşkı bile katar yaşamına. Bu küçük kasabada kaldığı sürece değerleri değişmeye başlar. İşte ancak ondan sonra gerçek bir kazanan olmaya hazır hale gelecektir. Arabalar üzerinden hayatın anlamına dokunan keyifli bir animasyon.', '7.1', '2006', '1 Hours 57 Minutes', 'https://www.youtube.com/embed/wFVKnC_9B9Y', 'https://img.icons8.com/color/48/000000/pixar.png', NULL),
+(11, NULL, 2, 'Cars 2', 'John Lasseter', 'cars-2', 'https://tr.web.img3.acsta.net/medias/nmedia/18/71/72/07/19650210.jpg', 'Arabalar 2, Pixar\'ın yapımlığında bir bilgisayar animasyonu aksiyon macera komedi 3-D filmidir ve 2006 yapımlı Arabalar filminin devamıdır. Dağıtımını Walt Disney Pictures şirketi yapmıştır. Ratatuy filminin yönetmeni Brad Lewis ve filmin yapımcısı John Lasseter görevi devraldı.', '6.1', '2011', '1 Hours 47 Minutes', 'https://www.youtube.com/embed/JnSE21Tifh0', 'https://img.icons8.com/nolan/48/pixar.png', NULL),
+(12, NULL, 2, 'Cars 3', 'John Lasseter', 'cars-3', 'https://s1.1zoom.me/b5050/717/Cars_3_Lightning_McQueen_Jackson_Storm_Two_525908_600x800.jpg', 'Arabalar 3, Pixar\'ın yapımcılığında Walt Disney Pictures tarafından yayınlanan bir bilgisayar animasyonu 3-D filmidir ve 2006 yapımlı Arabalar ve 2011 yapımlı Arabalar 2 filmlerinin devamı olan 16 Haziran 2017 tarihinde vizyona giren üçüncü Arabalar filmidir. ', '6.7', '2017', '1 Hours 49 Minutes', 'https://www.youtube.com/embed/v0rXPy3msog', 'https://img.icons8.com/windows/48/000000/pixar.png', '0.00'),
+(13, NULL, 2, 'Oyuncak Hikayesi 1 ', 'John Lasseter', 'oyuncak-hikayesi-1', 'https://tr.web.img4.acsta.net/pictures/bzp/01/14264.jpg', 'Buzz Lightyear adlı yeni çıkan oyuncak, Andy\'e hediye edilir. Oyuncağı çok seven Andy, eski gözdesi Şerif Woody\'e olan ilgisini yitirir. Bir gün Buzz yanlışlıkla pencereden aşağı uçunca, herkes Woody\'nin onu öldürdüğüne inanır. Woody, kendisini kurtarabilmek için Buzz\'ın arkasından giderek onu geri getirmeye karar verir. Fakat ikiliyi dış dünyada büyük tehlikelerle dolu maceralar beklemektedir.\r\n\r\n\"Oyuncak Hikâyesi\", 2005 yılında Kongre Kütüphanesi tarafından \"kültürel, tarihi ve estetik olarak önemli\" filmler arasına seçilerek ABD Ulusal Film Arşivi\'nde muhafaza edilmesine karar verilmiştir.', '8.3', '1995', '1 Hours 14 Minutes', 'https://www.youtube.com/embed/v-PjgYDrg70', 'https://img.icons8.com/ios-filled/48/000000/buzz-lightyear.png', '0.00'),
+(14, NULL, 2, 'Oyuncak Hikayesi 2 ', 'John Lasseter', 'oyuncak-hikayesi-2', 'https://tr.web.img2.acsta.net/pictures/bzp/03/22323.jpg', 'Andy\'nin tatil için bir kovboy kampına gitmesi sonucu oyuncakları kendi başına kalırlar. Bu sırada paradan başka bir şey düşünmeyen AL McWhiggin adlı koleksiyoncu, Woody\'yi kaçırır. Kaçırılan Woody geçmişine ilişkin bazı gerçeklerle yüz yüze gelerek eski ve yeni arkadaşları arasında bir seçim yapmak zorunda kalır.', '7.9', '1999', '1 Hours 22 Minutes', 'https://www.youtube.com/embed/AvWwvcUuNKs', 'https://img.icons8.com/nolan/48/pixar.png', NULL),
+(15, NULL, 2, 'Oyuncak Hikayesi 3 ', 'Lee Unkrich', 'oyuncak-hikayesi-3', 'https://tr.web.img3.acsta.net/medias/nmedia/18/63/96/06/19415330.jpg', 'Andy artık büyümüştür, üniversiteye gidecektir. Oyuncaklar ile oynamayı bırakmıştır. Woody, Bazz ve diğer oyuncaklar tekrar Andy ile oynamak için bir yol bulmaya çalışırlar. Andy Woody dışındaki oyuncakları bir poşet içinde tavan arasına kaldırmak isterken yanlışlıklar sonucu diğer oyuncaklar kendilerini bir kreşte bulurlar. Kreşin oyuncaklarının lideri Yumuş adlı bir pelüş ayıdır. Yumuş ve yanındaki oyuncaklar önce Buzz ve arkadaşlarına iyi davranıyormuş gibi gözükse de sonradan o kadar da iyi olmadıkları anlaşılır. Woody bir şekilde kreşe ulaşır v oradan diğer arkadaşlarıyla bir kaçış planı yapar. Yumuş ise onları engellemek için elinden geleni yapar.\r\n\r\n', '8.2', '2010', '1 Hours 43 Minutes', 'https://www.youtube.com/embed/wTy-MSfC8tA', 'https://img.icons8.com/color/48/000000/pixar-lamp.png', '0.00'),
+(16, NULL, 2, 'Oyuncak Hikayesi 4', 'Josh Cooley', 'oyuncak-hikayesi-4', 'https://image.biletinial.com/Uploads/Films/oyuncak-hikayesi-4-201961311557.jpg', 'Oyuncak Hikayesi 4, kaşıktan yapılma bir oyuncak olan Forky\'nin atıldığı macerayı konu ediyor. ... Tek kullanımlık bir kaşıktan yapılma bir oyuncak olsa da o oyuncak olmadığı konusunda ısrarcıdır. Kendisini Bonnie\'nin odasına ait hissetmeyen Forky, dünyadaki amacının ne olduğunu düşünmeye başlar.', '7.7', '2019', '1 Hours 40 Minutes', 'https://www.youtube.com/embed/ldOHKNg9A4M', 'https://img.icons8.com/color-glass/48/000000/pixar-lamp-2.png', '5.00'),
+(18, NULL, 3, 'Aquaman', 'James Wan', 'aquaman', 'https://tr.web.img3.acsta.net/pictures/18/11/16/07/25/3223476.jpg', 'Justice League sonrasında yaşananlardan yola çıkan solo Aquaman filminde Jason Momoa; John Curry, namıdiğer Aquaman\'a hayat vermeye devam ederken film, kahramanın gelen tehditler karşısında yurdu Atlantis\'i savunmak için girdiği amansız mücadeleyi konu ediniyor.', '6.9', '2018', '2 Hours 24 Minutes', 'https://www.youtube.com/embed/WDkg3h8PCVU', 'https://img.icons8.com/color/48/000000/aquaman.png', '5.00'),
+(19, NULL, 3, 'Alaaddin', 'Guy Ritchie', 'alaaddin', 'https://biletinial.com/Uploads/Films/aladdin-2019516103920.jpg', 'Aladdin, sihirli bir lamba sayesinde sevdiği kıza ulaşmaya çalışırken, kendisini zorlu bir maceranın içerisinde bulan bir gencin hikayesini konu ediyor. Aladdin, zamanını Agrabah şehrinde pazardan yiyecek çalarak geçiren fakir bir gençtir. ... Ancak yaşam tarzına rağmen aslında Aladdin\'in altın gibi bir kalbi vardır.', '6.9', '2019', '2 Hours 8 Minutes', 'https://www.youtube.com/embed/foyufD52aog', 'https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/64/000000/external-lamp-camping-icongeek26-linear-colour-icongeek26.png', '5.00'),
+(20, NULL, 3, 'Ready Player One', 'Steven Spielberg', 'ready-player-one', 'https://tr.web.img4.acsta.net/pictures/18/03/21/15/11/0917889.jpg', 'Ailesini küçük yaşta kaybeden Wade Watts, gerçek dünyanın sıkıntılarından kaçmak için zamanını The Oasis adlı bir oyun evreninde geçirir. Oyunun milyoner kurucusu oyun evreninin içine bir anahtar saklamıştır ve öldüğünde tüm servetini ve oyunun kontrolünü bu anahtarı bulana vadetmektedir', '7.4', '2018', '2 Hours 20 Minutes', 'https://www.youtube.com/embed/cSp1dM2Vj48', 'https://img.icons8.com/external-ddara-lineal-color-ddara/48/000000/external-gamer-ar-and-vr-technology-ddara-lineal-color-ddara.png', NULL),
+(21, NULL, 3, 'X-Men: Dark Phoenix', 'Simon Kinberg', 'x-men-dark-phoneix', 'https://i.pinimg.com/originals/be/3c/bb/be3cbbdb06f7d362fa30f002a68f353f.jpg', 'X-Men: Dark Phoenix, Marvel Comics\'in X-Men karakterlerinden uyarlanan ve 20th Century Fox tarafından dağıtılan ABD yapımı süper kahraman filmi. X-Men film serisinin on üçüncü ve yeni bir X-Men üçlemesinin başlangıç filmi olacaktır.', '6.0', '2019', '1 Hours 54 Minutes', 'https://www.youtube.com/embed/k7IG_ICMrhk', 'https://img.icons8.com/color/48/000000/hawkgirl.png', NULL),
+(24, NULL, 4, 'Se7en', 'David Fincher', 'seven', 'https://m.media-amazon.com/images/M/MV5BMmJlNmU0MjMtYmVkZS00ZDdiLTljZjQtYTA2YWRjYTI1OWYxXkEyXkFqcGdeQXVyMTgxOTIzNzk@._V1_.jpg', 'Yedi, seri cinayetler işleyen bir katilin peşine düşen iki polis dedektifinin hikayesini anlatıyor. Bir seri katil 7 ölümcül günahı işleyenleri kendi yöntemleriyle öldürmektedir. Yedi Ölümcül Günah, Hıristiyanlık inançlarına göre Kibir, Açgözlülük, Şehvet Düşkünlüğü,Kıskançlık, Oburluk,Yıkıcılık ve Tembellik\'tir. İki polis dedektifi bu seri katilin peşindedir. Film, Amerika\'da gösterime girdiği hafta 14.000.000 dolar gelir elde etmişti. Yönetmen David Fincher imzalı film,sürükleyici konusu ve oyuncuların performanslarıyla tüm dünyada gişede büyük başarı yakalamıştı. Başrollerde Brad Pitt, Morgan Freeman, Gywneth Paltrow var. En iyi kurgu dalında 1996’da ödüle aday olan film bu ödülü alamamıştı. Özellikle sürpriz ve çarpıcı finali ile şimdiden sinema tarihinde bir klasik olarak yerini aldı.', '8.6', '1995', '2 Hours 7 Minutes', 'https://www.youtube.com/embed/znmZoVkCjpI', 'https://img.icons8.com/ios-filled/50/000000/no-weapons.png', NULL),
+(25, NULL, 5, 'Ned Kelly', 'Gregor Jordan', 'ned-kelly', 'https://tr.web.img2.acsta.net/pictures/bzp/01/38713.jpg', 'Ned Kelly, Gregor Jordan\'ın yönettiği, Avustralya yapımı bir western filmidir. Suçlu Ned Kelly\'nin hayatını konu alan Robert Drewe\'in Our Sunshine adlı kitabından yola çıkılarak çekilmiştir. Yapım dünya çapında 6,585,516$ kazanmıştır.', '6.5', '2003', '1 Hours 50 Minutes', 'https://www.youtube.com/embed/tc6GA-kahbE', NULL, NULL),
+(26, NULL, 5, 'The Revenant', 'Alejandro González Iñárritu', 'the-revenant', 'https://i.pinimg.com/originals/db/ec/52/dbec52733eecedb20cccbbbec4456d85.jpg', 'Diriliş, Alejandro G. Iñárritu\'nun yönettiği, 2016 yılında gösterime giren biyografik western gerilim filmi. Senaryo Michael Punke\'nin 2002\'de yayınlanan aynı adlı romanından uyarlanarak Iñárritu ve Mark L. Smith tarafından yazıldı. Filmde sınır sakini Hugh Glass\'ın hayatından esinlenildi.', '8', '2015', '2 Hours 36 Minutes', 'https://www.youtube.com/embed/LoebZZ8K5N0', NULL, NULL),
+(27, NULL, 8, '21 Bridges', 'Brian Kirk', '21-bridges', 'https://biletinial.com/Uploads/Films/21-bridges-201962010347.jpg', 'Gözden düşmüş bir NYPD dedektifi, polis katili bir adamın şehirde bir insan avı başlatmasıyla kendini affettirmek için ikinci bir şans elde eder. Meslektaşlarını bir suç imparatorluğu ile ilişkilendiren bir komployu açığa çıkaran dedektif, kendini büyük çaplı bir kovalamacanın göbeğinde bulur.', '6.6', '2019', '1 Hours 36 Minutes', 'https://www.youtube.com/embed/BVZDhunTrYA', NULL, NULL),
+(28, NULL, 6, 'Joker', 'Todd Phillips', 'joker', 'https://s1.1zoom.me/b6253/890/Joker_hero_Joker_2019_Joaquin_Phoenix_Clown_572451_600x800.jpg', 'Joker, başarısız bir komedyen olan Arthur Fleck\'in hayatına odaklanıyor. Toplum tarafından dışlanan bir adam olan Arthur, hayatta yapayalnızdır. Sürekli bir bağ kurma arayışında olan Arthur, yaşamını taktığı iki maske ile geçirir. ... Arthur, zamanla kendi kimliğinden uzaklaşıp Joker karakterine bürünür.', '8.4', '2019', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/WVC1KC4Lauc', NULL, NULL),
+(29, NULL, 1, 'The Suicide Squad / İntihar Timi', 'James Gunn', 'the-suicide-squad-intihar-timi', 'https://cdn.biletinial.com/Uploads/Films/the-suicide-squad-intihar-timi-202172792854.jpg', 'The Suicide Squad: İntihar Timi, hapishaneden çıkabilmek için çabalayan kötü kahramanlara odaklanıyor. Belle Reve, ABD\'deki en yüksek ölüm oranına sahip olan hapishanedir. Süper Kötülerin tutulduğu bu yerden kurtulmak için her şey göze alınır. Bloodsport, Peacemaker, Captain Boomerang, Ratcatcher 2, Savant, King Shark, Blackguard, Javelin ve herkesin favori psikopatı Harley Quinn yap ya da öl görevini yerine getirebilmek için bir mahkumlar timi oluşturur.', '7.3', '2021', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/rahSqns0UCw', NULL, '0.00'),
+(30, NULL, 6, 'Eşkiya', 'Yavuz Turgul', 'eskiya', 'https://tr.web.img4.acsta.net/pictures/bzp/01/17646.jpg', 'Eşkiya, hapse düşmesine neden olan arkadaşının peşine düşen bir adamın hikayesini anlatıyor. 35 yıl önce Cudi dağlarında bir grup eşkiya yakalandı ve hapse atıldı. Yıllar içinde kimi hastalıktan, kimi hesaplaşma sonucu öldü. Biri hariç... 35 yıl sonra Hapisten çıkınca Baran\' ın ilk işi köyüne dönmek olur.', '8.2', '1996', '2 Hours 2 Minutes', 'https://www.youtube.com/embed/FOtWWsRiHJw', NULL, NULL),
+(32, NULL, 6, 'God Father', 'Francis Ford Coppola', 'god-father', 'https://tr.web.img3.acsta.net/medias/nmedia/18/91/63/78/20155809.jpg', 'The Godfather ismiyle de bilinen Baba filminde, bir İtalyan mafya ailesinin destansı öyküsü ele alınıyor. 40\'lar ve 50\'lerin Amerika\'sında geçen İtalyan asıllı Corleone ailesinin şehri ve diğer aileleri yönetmesi sonucunda mafya topluluğu haline gelmiştir.', '9.2', '1972', '2 Hours 55 Minutes', 'https://www.youtube.com/embed/sY1S34973zA', NULL, NULL),
+(33, NULL, 6, 'God Father 2 ', 'Francis Ford Coppola', 'god-father-2', 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/28d19919067247.562d47bb13239.jpg', 'Michael Corleone, mafya dünyasında inanılmaz bir güce ulaşırken, bir yandan da ailesini korumaya çalışır. Fakat zaman içerisinde gelişen olaylar onu hiç yapmak istemediği işlere ve suçlara yönlendirir. Tek özelliği zekası iken bir anda bir suç imparatorluğunu yönetecek acımasızlığa ve kendine güvene kavuşur.', '9', '1974', '3 Hours 22 Minutes', 'https://www.youtube.com/embed/9O1Iy9od7-A', NULL, NULL),
+(34, NULL, 8, 'V For Vendetta ', 'James McTeigue', 'v-for-vendetta', 'https://i.pinimg.com/736x/3c/54/26/3c5426ecfe85d2e03b640415c2c319d8.jpg', 'V, 2020 yılında ve İngiltere\'de geçiyor. Ülke, son derece baskıcı bir toplum düzenini yaşamaktadır. Türlü yasaklar ve engellerle idare edilen halk, şiddet yanlısı bir konuma gelmiştir. Bu kargaşanın orta yerinde görünen gizemli V, belaya bulaşmış masum bir kadın olan Evey\'i kurtarır.', '8.1', '2005', '2 Hours 12 Minutes', 'https://www.youtube.com/embed/IHVzzxrPt1c', NULL, '0.00'),
+(35, NULL, 7, 'Yüzüklerin Efendisi', 'Peter Jackson', 'yuzuklerin-efendisi', 'https://tr.web.img2.acsta.net/medias/nmedia/18/35/11/65/affiche.jpg', 'John Ronald Reuel Tolkien\'in yazdığı Yüzüklerin Efendisi adlı fantastik edebiyat serisinden uyarlanarak çekilmiş Peter Jackson imzalı bir film üçlemesidir. Yüzüklerin Efendisi: Yüzük Kardeşliği Yüzüklerin Efendisi: İki Kule Yüzüklerin Efendisi: Kralın Dönüşü', '8.8', '2001', '2 Hours 58 Minutes', 'https://www.youtube.com/embed/USNqsrW5DrQ', NULL, NULL),
+(36, NULL, 8, 'Shershaah', 'Vishnuvardhan', 'shershaah', 'https://1.bp.blogspot.com/-cB1N2IDJx_4/XiAje3sXAEI/AAAAAAAAuHk/R6OKddbIkVsMHiuOeIWWOaHS3_2NaOr6gCNcBGAsYHQ/s1600/Shershaah-Poster-3.jpg', '24 yaşında Kargil Savaşı\'nda şehit edilen yüzbaşı Vikram Batra\'nın ilham veren hikayesi gözler önüne seriliyor.', '8.7', '2021', '2 Hours 15 Minutes', 'https://www.youtube.com/embed/Q0FTXnefVBA', NULL, NULL),
+(37, NULL, 1, 'DUNE', 'Denis Villeneuve', 'dune', 'https://image.biletinial.com/Uploads/Films/dune-col-gezegeni-2021811132026.jpg', 'Dune\'un konusu ise şöyle: Uzak bir gelecekte geçen \"Dune\", ailesi çöl gezegeni Arrakis\'in kontrolüne sahip olan Paul Atreides\'in hikayesini anlatıyor. Galaksinin farklı noktalarındaki gezegenler, rakip feodal aileler tarafından yönetilmektedir. ... Bu tuzağın sonucunda Paul\'un ailesi darmadağın olarak firari hale gelir.', '8.4', '2021', '2 Hours 35 Minutes', 'https://www.youtube.com/embed/dHc2AQaEaJw', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -360,6 +395,29 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `people`
+--
+
+CREATE TABLE `people` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `permission_level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `people`
+--
+
+INSERT INTO `people` (`id`, `name`, `email`, `password`, `permission_level`, `created_at`, `updated_at`) VALUES
+(1, 'Ufuk Demirel', 'ufukdemirel234@gmail.com', '$2y$10$sqsLkWg0B8gL7WRz6.DtLOZy.JKTYnFyO/w3qriUAf86VsnqSgRbe', 'admin', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `personal_access_tokens`
 --
 
@@ -426,15 +484,13 @@ INSERT INTO `score` (`id`, `score_name`, `score_date`, `score_comment`, `rating`
 (7, 'Deniz Demirel', '05/12/2021', 'Harika film tavsiye ederim.', 5, 4, NULL),
 (8, 'Gazi Demirel', '05/12/2021', 'Harika film tavsiye ederim.', 3, 4, NULL),
 (9, 'asdfasf', '05/12/2021', 'Harika film tavsiye ederim.', 3, 4, NULL),
-(10, 'Melih Mustafa Acet', '07/12/2021', 'safsadfadsf', 5, 4, NULL),
-(11, 'Deniz Demirel', '07/12/2021', 'sadsad', 5, 4, NULL),
-(12, 'asdfasf', '05/12/2021', 'asdasda', 5, 4, NULL),
-(13, 'asdfasf', '05/12/2021', 'asdasda', 5, 4, NULL),
-(14, 'asdfasf', '05/12/2021', 'asdasda', 5, 4, NULL),
-(15, 'asdfasf', '05/12/2021', 'asdasda', 5, 4, NULL),
-(16, 'Deniz Demirel', '07/12/2021', 'sadasdsad', 5, 1, NULL),
 (17, 'Deniz Demirel', '05/12/2021', 'Güzelmiş', 5, NULL, 8),
-(18, 'Deniz Demirel', '08/12/2021', 'Güzel', 4, NULL, 19);
+(18, 'Deniz Demirel', '08/12/2021', 'Güzel', 4, NULL, 19),
+(19, 'Melih Mustafa Acet', '14/12/2021', 'Çok aksiyonu bol bir film', 5, 3, NULL),
+(42, 'Deniz Demirel', '2022-04-14', 'Devam filmi için mükemmel.', 4, 3, NULL),
+(43, 'Deniz Demirel', '2022-04-14', 'Devam filmi gelirse harika olur.', 5, 1, NULL),
+(44, 'Deniz Demirel', '2022-04-14', 'Bu seri bozulmamalıı.', 5, 5, NULL),
+(45, 'Deniz Demirel', '2022-04-14', 'Mükemmel.', 4, 15, NULL);
 
 -- --------------------------------------------------------
 
@@ -465,8 +521,8 @@ CREATE TABLE `series` (
 --
 
 INSERT INTO `series` (`id`, `created_at`, `updated_at`, `category_id`, `series_name`, `series_director`, `series_season`, `series_part`, `series_trailer`, `series_slug`, `series_image`, `series_desc`, `series_imdb`, `series_date`, `emoji`) VALUES
-(1, NULL, NULL, 1, 'Bodyguard', 'Siddique', '1', '6', 'https://www.youtube.com/embed/7TDILqtggjs', 'bodyguard', 'https://tr.web.img3.acsta.net/pictures/18/10/19/13/22/2994340.jpg', 'Bodyguard, bir politikacıyı korumakla görevli olan savaş gazisinin hikayesini konu ediyor. David Budd, Londra Metropolitan Polisi\'nde Özel Koruma Memuru olarak çalışan bir adamdır. Dengesiz ama cesur bir polis memuru olan David, kendisini bir anda içinde bulduğu bir terör saldırısının engellenmesine yardımcı olur.', '7.8', '2018', 'https://img.icons8.com/color/48/000000/bodyguard-male.png'),
-(2, NULL, NULL, 9, 'Sherlock Holmes', 'Paul McGuigan', '4', '13', 'https://www.youtube.com/embed/xK7S9mrFWL4', 'sherlock-holmes', 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/f23cd725047183.5633e6a6bbc27.jpg', 'Bir roman uyarlaması olan Sherlock, bir dedektiflik dizisidir. Sherlock Holmes adında bir dedektif ve onun tamamen tesadüf eseri tanıştığı destekçisi Dr. John Watson birlikte iş yapmaya başlarlar. Ev arkadaşı olan bu ikili, yeni taşındıkları mahallede geçen cinayet olaylarında polise yardım etmekle başlarlar işe.', '9.0', '2010-2017', 'https://img.icons8.com/color/48/000000/sherlock-holmes.png'),
+(1, NULL, '2022-02-22 09:45:05', 4, 'Bodyguard', 'Siddique', '1', '6', 'https://www.youtube.com/embed/7TDILqtggjs', 'bodyguard', 'https://tr.web.img3.acsta.net/pictures/18/10/19/13/22/2994340.jpg', 'Bodyguard, bir politikacıyı korumakla görevli olan savaş gazisinin hikayesini konu ediyor. David Budd, Londra Metropolitan Polisi\'nde Özel Koruma Memuru olarak çalışan bir adamdır. Dengesiz ama cesur bir polis memuru olan David, kendisini bir anda içinde bulduğu bir terör saldırısının engellenmesine yardımcı olur.', '7.8', '2018', 'https://img.icons8.com/color/48/000000/bodyguard-male.png'),
+(2, NULL, '2022-02-22 09:48:00', 9, 'Sherlock Holmes', 'Paul McGuigan', '4', '13', 'https://www.youtube.com/embed/xK7S9mrFWL4', 'sherlock-holmes', 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/f23cd725047183.5633e6a6bbc27.jpg', 'Bir roman uyarlaması olan Sherlock, bir dedektiflik dizisidir. Sherlock Holmes adında bir dedektif ve onun tamamen tesadüf eseri tanıştığı destekçisi Dr. John Watson birlikte iş yapmaya başlarlar. Ev arkadaşı olan bu ikili, yeni taşındıkları mahallede geçen cinayet olaylarında polise yardım etmekle başlarlar işe.', '9.0', '2010-2017', 'https://img.icons8.com/color/48/000000/sherlock-holmes.png'),
 (4, NULL, NULL, 1, 'Prison Break', 'Bobby Roth', '5', '90', 'https://www.youtube.com/embed/AL9zLctDJaU', 'prison-break', 'https://tr.web.img3.acsta.net/pictures/17/05/22/16/49/588696.jpg', 'Büyük Kaçış, ABD yapımı bir aksiyon dizisi. Hikâyesi Paul Scheuring tarafından ortaya atılmış ve FOX şirketi tarafından 2005 yılında dizi olarak hayatına adım atmıştır.', '8.3', '2005-2017', 'https://img.icons8.com/external-vitaliy-gorbachev-lineal-color-vitaly-gorbachev/48/000000/external-prisoner-protest-vitaliy-gorbachev-lineal-color-vitaly-gorbachev.png'),
 (5, NULL, NULL, 2, 'Game Of Thrones', 'Alan Taylor', '8', '73', 'https://www.youtube.com/embed/KPLWWIOCOOQ', 'game-of-thrones', 'https://s1.1zoom.me/b5050/277/Game_of_Thrones_Head_529923_600x800.jpg', 'Westeros ve Essos adlı kurgusal kıtaların olduğu dünyada geçen taht mücadelelerinde Baratheon Hanesi\'nin başında olduğu Yedi Krallık\'ta Kralın Sağ Eli Jon Arryn öldükten sonra Kral Robert Baratheon\'ın kral maiyeti ile Winterfell\'a gelip eski dostu Eddard Stark\'a sağ kolu olma teklif etmesiyle başlar.', '9.2', '2011-2019', 'https://img.icons8.com/ios/48/000000/targaryen-house.png'),
 (6, NULL, NULL, 10, 'The Mandolorian', 'Jon Favreau', '2', '16', 'https://www.youtube.com/embed/aOC8E8z_ifw', 'the-mandolorian', 'https://i.pinimg.com/736x/5e/c4/13/5ec413ece16c74aa327d9d5f3f929d4e.jpg', 'The Mandalorian, 12 Kasım 2019\'da Disney+\'ta yayımlanmaya başlayan, uzay Western\'i tarzı, internet tabanlı televizyon dizisidir. Yıldız Savaşları evreninde geçen dizi, Jedi\'ın Dönüşü döneminden beş yıl sonra başlar ve Yeni Cumhuriyet\'in ulaşamayacağı yerlerde bir Mandaloryalı ödül avcısını izler.', '8.5', '2019-', 'https://img.icons8.com/color/48/000000/baby-yoda.png'),
@@ -477,7 +533,7 @@ INSERT INTO `series` (`id`, `created_at`, `updated_at`, `category_id`, `series_n
 (12, NULL, NULL, 11, 'The Witcher', 'Stephen Surjik', '2', '8', 'https://www.youtube.com/embed/ndl1W4ltcmg', 'the-witcher', 'https://s1.1zoom.me/b5255/528/The_Witcher_3_Wild_Hunt_Wolves_Head_Black_572570_600x800.jpg', 'The Witcher\'ın fantastik hikayesinde, yüzyılı aşkın süredir bir arada yaşayan insanlar, cüceler ve elfler arasındaki barış sona erer ve yeni bir ırklar arası savaş patlak verir. The Witcher olarak nam salan acımasız suikastçı Geralt of Rivia, vaadedilen çocuğun doğumunu beklemektedir.', '8.2', '2019-', 'https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/48/000000/external-wolf-animal-faces-icongeek26-linear-colour-icongeek26.png\n'),
 (13, NULL, NULL, 1, 'Invincible', 'Evan Goldberg', '1', '6', 'https://www.youtube.com/embed/-bfAVpuko5o', 'invincible', 'https://storage.googleapis.com/hipcomic/p/bdfee0e38748b31a70f73cdb580eba68-800.jpg', 'Invincible, dünyanın en güçlü süper kahramanının oğlu olan Mark Grayson\'ın hikayesini konu ediyor. Sıradan bir genç olan Mark\'ın hayatı 17. yaşına bastığında bambaşka bir hal alır. O da artık babası gibi bir takım süper güçlere sahiptir. ... Invincible\'ın showrunner koltuğunda Simon Racioppa yer alıyor.', '8.7', '2021-', 'https://img.icons8.com/color/48/000000/superman-dc.png'),
 (14, NULL, NULL, 11, 'The Magicians', 'John McNamara', '5', '65', 'https://www.youtube.com/embed/wCMMNUAYoNE', 'the-magicians', 'https://www.syfy.com/sites/syfy/files/styles/syfy_image_gallery_full_breakpoints_theme_syfy_smartphone_1x/public/magicians_s2_photos_08.jpg', 'Quentin Coldwater isimli bir gencin, sihir gücü olduğunu keşfetmesini ve New York\'un kuzeyindeki çok gizli ve prestijli bir büyücülük okuluna kabul olmasıyla değişen hayatını, girdiği tehlikeli ve karanlık yolları anlatan The Magicians, Lev Grossman\'ın aynı adlı çok satan romanından uyarlanıyor.', '7.6', '2015-2020', 'https://img.icons8.com/external-wanicon-flat-wanicon/48/000000/external-magic-fairytale-wanicon-flat-wanicon.png'),
-(15, NULL, NULL, 1, 'Frontier', 'Rob Blackie/ Peter Blackie', '3', '18', 'https://www.youtube.com/embed/2J5wTsYAh94', 'frontier', 'https://www.mjacket.com/product_img/1575917640-jason-momoa-frontier-declan-harp-coat.jpg', 'Frontier, 18. Yüzyılın sonlarına doğru Kuzey Amerika\'da ticari bir geçim kaynağı olarak sanayileşen, şiddet olaylarının ve kanlı çatışmaların yaşandığı kürk ticaret sisteminin gelişimini merkezine alacak.', '8.0', '2016-2018', 'https://img.icons8.com/color/48/000000/iron-age-warrior.png'),
+(15, NULL, '2022-02-22 09:48:18', 1, 'Frontier', 'Rob Blackie/ Peter Blackie', '3', '18', 'https://www.youtube.com/embed/2J5wTsYAh94', 'frontier', 'https://www.mjacket.com/product_img/1575917640-jason-momoa-frontier-declan-harp-coat.jpg', 'Frontier, 18. Yüzyılın sonlarına doğru Kuzey Amerika\'da ticari bir geçim kaynağı olarak sanayileşen, şiddet olaylarının ve kanlı çatışmaların yaşandığı kürk ticaret sisteminin gelişimini merkezine alacak.', '8.0', '2016-2018', 'https://img.icons8.com/color/48/000000/iron-age-warrior.png'),
 (16, NULL, NULL, 10, 'Vikings', 'Michael Hirst', '6', '89', 'https://www.youtube.com/embed/0kz8BwGUxQw', 'vikings', 'https://s1.1zoom.me/b5548/721/Warriors_Vikings_(TV_series)_Men_Travis_Fimmel_516656_600x800.jpg', 'Savaş tanrısı Odin’nin soyundan geldiğine inanılan Viking Kralı olan Ragnar Lothbrok ve ailesinin öykülerini ekranlara getiriyor. Oscar ödüllü Elizabeth, Camelot ve The Tudors gibi çok başarılı olan tarihi dizilerin senaristi Michael Hirst’in imzasını taşıyan dizi, 13. Yüzyıl kuzey efsanelerini ve Viking kültürünü izleyicilerine keşfettiriyor.', '8.5', '2013-2020', 'https://img.icons8.com/external-soft-fill-juicy-fish/48/000000/external-viking-video-game-elements-soft-fill-soft-fill-juicy-fish.png'),
 (17, NULL, NULL, 7, 'TİMELESS', 'John Showalter', '2', '28', 'https://www.youtube.com/embed/zSYZJGAGvww', 'timeless', 'https://tr.web.img4.acsta.net/pictures/16/05/17/16/05/248998.jpg', 'Shawn Ryan ve Eric Kripke tarafından yaratılan dizi; insanlığın dokusunu değiştirecek kadar güçlü bir girişimi önlemek için zamanda yolculuk eden üçlünün maceralarını anlatıyor.', '7.7', '2016-2018', 'https://img.icons8.com/office/48/000000/fraud.png'),
 (18, NULL, NULL, 11, 'THE BOYS', 'Hartley Gorenstein', '2', '16', 'https://www.youtube.com/embed/tcrNsIaQkb4', 'the-boys', 'https://lh3.googleusercontent.com/proxy/NGQBlMxQjYkrKC5wkOEuKMHdV56Dnw93v1qbLmUQ7rTqR8HRxUsqrChJEJ6OCPN-t4WC99EkIU_w71mjITwbDCQTqqVfa_4_Q7WWf33omNu3psJZweuPhlnxeele724DUgb52OykaKHP', 'The Boys, süper kahramanların güçlerini ve şöhretlerini kötüye kullandığı bir evrende geçiyor. Kendilerini kanunu korumaya adayan ve “The Boys” olarak adlandırılan bir grup insan, yozlaşmış süper kahramanları ortadan kaldırmak için zorlu bir yolculuğa çıkar.', '8.7', '2019-', 'https://img.icons8.com/fluency-systems-filled/48/000000/superman-dc.png'),
@@ -603,6 +659,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Tablo için indeksler `people`
+--
+ALTER TABLE `people`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -687,7 +749,7 @@ ALTER TABLE `first_movies_categories`
 -- Tablo için AUTO_INCREMENT değeri `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `movies`
@@ -708,6 +770,12 @@ ALTER TABLE `newly_released`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `people`
+--
+ALTER TABLE `people`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -723,7 +791,7 @@ ALTER TABLE `reviews`
 -- Tablo için AUTO_INCREMENT değeri `score`
 --
 ALTER TABLE `score`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `series`
